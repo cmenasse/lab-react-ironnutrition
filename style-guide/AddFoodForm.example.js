@@ -1,11 +1,19 @@
-// Style Guide:
-// In this file you can find a reference example of the structure
-// and content that the component should render.
-// Remember to import Ant Design components before using them.
+import { useState } from "react";
 import { Divider, Input } from 'antd';
 
-// Iteration 4
 function AddFoodForm(props) {
+
+  const [name, setName] = useState("");
+  const [image, setImage] = useState("");
+  const [calories, setCalories] = useState(0);
+  const [servings, setServings] = useState(0);
+
+
+  const handleSubmit = (e) => {       
+    e.preventDefault();
+    const newFood= { name, image, calories, servings };
+    props.addFood(newFood);       
+ 
   return (
     <form>
       <Divider>Add Food Entry</Divider>
@@ -14,13 +22,13 @@ function AddFoodForm(props) {
       <Input value={undefined} type="text" onChange={() => {}} />
 
       <label>Image</label>
-      {/* render antd <Input /> type="text" here */}
+      <Input value={undefined} type="text" onChange={() => {}} />
 
       <label>Calories</label>
-      {/* render antd <Input /> type="number" here */}
+      <Input value={undefined} type="number" min="1" onChange={() => {}} />
 
       <label>Servings</label>
-      {/* render antd <Input /> type="number" here */}
+      <Input value={undefined} type="number" min="1" onChange={() => {}} />
 
       <button type="submit">Create</button>
     </form>
